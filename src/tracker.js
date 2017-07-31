@@ -1,11 +1,16 @@
 import Ajax from './ajax.js';
 
 // TODO: Change this with a production token.
-const TOKEN = 'token';
+const TOKEN = '';
+
 const API_URL = 'https://fleet.cortexpowered.com/api/track';
 
 class Tracker {
   static track(deviceId, campaign, view) {
+    if (!TOKEN) {
+      return;
+    }
+
     const clientTime = new Date().getTime();
     const opts = {
       url: API_URL,
